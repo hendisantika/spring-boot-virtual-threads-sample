@@ -4,6 +4,7 @@ import id.my.hendisantika.virtualthreads.service.RequestProcessingService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,4 +24,10 @@ public class SpringBootVirtualThreadsController {
     private final Logger log = LoggerFactory.getLogger(SpringBootVirtualThreadsController.class);
 
     private final RequestProcessingService requestProcessingService;
+
+    @GetMapping("/hello")
+    public String sendGreetings() {
+        log.info("Hello endpoint. current thread: {}", Thread.currentThread());
+        return "Hello, World!";
+    }
 }
