@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : spring-boot-virtual-threads-sample
@@ -35,5 +37,11 @@ public class SpringBootVirtualThreadsController {
     public String sendGreetingsWithDelay() throws InterruptedException {
         log.info("Hello endpoint with delay. current thread: {}", Thread.currentThread());
         return requestProcessingService.greetingsWithDelay();
+    }
+
+    @GetMapping("/hello-async")
+    public CompletableFuture<String> sendGreetingsAsync() {
+        log.info("Hello endpoint with async. current thread: {}", Thread.currentThread());
+        return requestProcessingService.greetingsWithAsyncProcessing();
     }
 }
