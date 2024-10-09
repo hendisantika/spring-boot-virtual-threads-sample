@@ -28,4 +28,10 @@ public class RequestProcessingService {
         log.info("Async request processing. current thread: {}", Thread.currentThread());
         return CompletableFuture.completedFuture("Hello, World!");
     }
+
+    public String greetingsWithDelay() throws InterruptedException {
+        log.info("Request processing with delay. current thread: {}", Thread.currentThread());
+        Thread.sleep(3000);
+        return "Hello, World!";
+    }
 }
