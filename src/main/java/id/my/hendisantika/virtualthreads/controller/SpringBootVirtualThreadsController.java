@@ -30,4 +30,10 @@ public class SpringBootVirtualThreadsController {
         log.info("Hello endpoint. current thread: {}", Thread.currentThread());
         return "Hello, World!";
     }
+
+    @GetMapping("/hello-with-delay")
+    public String sendGreetingsWithDelay() throws InterruptedException {
+        log.info("Hello endpoint with delay. current thread: {}", Thread.currentThread());
+        return requestProcessingService.greetingsWithDelay();
+    }
 }
